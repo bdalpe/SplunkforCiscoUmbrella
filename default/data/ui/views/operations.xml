@@ -11,55 +11,6 @@
   </fieldset>
   <row>
     <panel>
-      <single>
-        <search>
-          <query>| tstats count from `umbrella_datamodel`</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="underLabel">Total Number of DNS Logs</option>
-      </single>
-      <single>
-        <search>
-          <query>| tstats dc(logs.user) from `umbrella_datamodel`</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="drilldown">none</option>
-        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="underLabel">Users</option>
-      </single>
-      <single>
-        <search>
-          <query>| tstats dc(logs.InternalIp) from `umbrella_datamodel`</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="drilldown">none</option>
-        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="underLabel">Internal IP Addresses</option>
-      </single>
-      <single>
-        <search>
-          <query>| tstats dc(logs.ExternalIp) from `umbrella_datamodel`</query>
-          <earliest>$time.earliest$</earliest>
-          <latest>$time.latest$</latest>
-        </search>
-        <option name="drilldown">none</option>
-        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
-        <option name="refresh.display">progressbar</option>
-        <option name="underLabel">External IP Addresses</option>
-      </single>
-    </panel>
-  </row>
-  <row>
-    <panel>
       <chart>
         <title>Reply Codes</title>
         <search>
@@ -118,7 +69,7 @@
         </search>
         <option name="charting.chart">area</option>
         <option name="charting.chart.stackMode">stacked</option>
-        <option name="charting.drilldown">none</option>
+        <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
           <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.record=$click.name2$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
@@ -137,9 +88,8 @@
         </search>
         <option name="count">10</option>
         <option name="drilldown">row</option>
-        <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.Query$&amp;form.reply_code=$row.Reply Code$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.Query$&amp;form.reply_code=$row.Reply%20Code$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
         </drilldown>
       </table>
     </panel>

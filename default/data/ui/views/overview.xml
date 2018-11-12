@@ -12,39 +12,50 @@
   <row>
     <panel>
       <single>
-        <title>DNS Log Volume (Daily)</title>
         <search>
-          <query>| tstats count from `umbrella_datamodel` groupby _time span=1d</query>
+          <query>| tstats count from `umbrella_datamodel`</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="colorBy">trend</option>
-        <option name="colorMode">none</option>
         <option name="drilldown">none</option>
-        <option name="height">164</option>
+        <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
         <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="trendDisplayMode">percent</option>
-        <option name="trendInterval">-24h</option>
-        <option name="underLabel">Log Volume Trend (Last 24 Hours)</option>
-        <option name="useColors">1</option>
+        <option name="underLabel">Total Number of DNS Logs</option>
       </single>
-    </panel>
-    <panel>
-      <chart>
-        <title>DNS Log Volume over Time</title>
+      <single>
         <search>
-          <query>| tstats count from `umbrella_datamodel` groupby _time span=1h</query>
+          <query>| tstats dc(logs.user) from `umbrella_datamodel`</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
-        <option name="charting.chart">line</option>
-        <option name="charting.chart.nullValueMode">gaps</option>
-        <option name="charting.drilldown">none</option>
-        <option name="charting.legend.placement">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
         <option name="refresh.display">progressbar</option>
-      </chart>
+        <option name="underLabel">Users</option>
+      </single>
+      <single>
+        <search>
+          <query>| tstats dc(logs.InternalIp) from `umbrella_datamodel`</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Internal IP Addresses</option>
+      </single>
+      <single>
+        <search>
+          <query>| tstats dc(logs.ExternalIp) from `umbrella_datamodel`</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">External IP Addresses</option>
+      </single>
     </panel>
   </row>
   <row>
@@ -64,6 +75,23 @@
         </drilldown>
       </chart>
     </panel>
+    <panel>
+      <chart>
+        <title>DNS Log Volume over Time</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` groupby _time span=1h</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
     <panel>
       <table>
         <title>Top Queries</title>
