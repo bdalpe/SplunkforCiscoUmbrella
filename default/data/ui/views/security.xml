@@ -41,7 +41,7 @@
         <option name="charting.legend.placement">none</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=*&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.action=Blocked</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.action=Blocked</link>
         </drilldown>
       </chart>
     </panel>
