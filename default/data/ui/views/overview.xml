@@ -1,0 +1,87 @@
+<form>
+  <label>Overview</label>
+  <fieldset submitButton="false">
+    <input type="time" token="time">
+      <label></label>
+      <default>
+        <earliest>-7d@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <title>DNS Log Volume (Daily)</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` groupby _time span=1d</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="height">164</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="trendDisplayMode">percent</option>
+        <option name="trendInterval">-24h</option>
+        <option name="underLabel">Log Volume Trend (Last 24 Hours)</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <chart>
+        <title>DNS Log Volume over Time</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` groupby _time span=1h</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">line</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart>
+        <title>Top Categories</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` groupby logs.categories | sort + count | rename logs.categories as Category, count as Count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/Umbrella/query_search?form.categories=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <table>
+        <title>Top Queries</title>
+        <search>
+          <query>| tstats count(logs.query) as count from `umbrella_datamodel` groupby logs.query | sort - count limit=10 | rename logs.query as "Query" count as "Count"</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">row</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">true</option>
+        <option name="totalsRow">false</option>
+        <drilldown>
+          <link target="_blank">/app/Umbrella/query_search?form.query=$click.value$</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

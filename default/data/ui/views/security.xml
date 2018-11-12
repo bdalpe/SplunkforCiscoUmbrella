@@ -1,0 +1,107 @@
+<form>
+  <label>Security</label>
+  <fieldset submitButton="false" autoRun="false">
+    <input type="time" token="time">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <chart>
+        <title>Top Security Threats Blocked by Category</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` where nodename="logs.security.blocked" groupby logs.categories | sort + count | rename logs.categories as Category, count as Count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">all</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/Umbrella/query_search?form.categories=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+        </drilldown>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Security Threats Blocked over Time</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` where nodename="logs.security.blocked" groupby _time span=1h</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/Umbrella/query_search?form.query=*&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.action=Blocked</link>
+        </drilldown>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Security Threats by Domain and Subdomain</title>
+        <search>
+          <query>| tstats count from `umbrella_datamodel` where nodename="logs.security.blocked" groupby logs.categories, logs.query | lookup ut_parse_extended_lookup url as logs.query | stats values(logs.query) as Subdomains, values(logs.categories) as Categories, sum(count) as Count by ut_domain | sort - Count | rename ut_domain as Domain</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="totalsRow">false</option>
+        <drilldown>
+          <condition field="Domain">
+            <link target="_blank">
+              <![CDATA[
+              /app/Umbrella/query_search?form.query=*$click.value2$&form.time.earliest=$earliest$&form.time.latest=$latest$&form.action=Blocked
+              ]]>
+            </link>
+          </condition>
+          <condition field="Subdomains">
+            <link target="_blank">
+              <![CDATA[
+              /app/Umbrella/query_search?form.query=$click.value2$&form.time.earliest=$earliest$&form.time.latest=$latest$&form.action=Blocked
+              ]]>
+            </link>
+          </condition>
+          <condition field="Categories">
+            <link target="_blank">
+              <![CDATA[
+              /app/Umbrella/query_search?form.categories=$click.value2$&form.time.earliest=$earliest$&form.time.latest=$latest$&form.action=Blocked
+              ]]>
+            </link>
+          </condition>
+          <condition field="Count">
+          </condition>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Top 10 Blocked Users</title>
+        <search>
+          <query>| tstats values(logs.categories) as Categories, count from `umbrella_datamodel` where nodename="logs.security.blocked" groupby logs.user | sort - count limit=10 | rename logs.user as User, count as Count</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="drilldown">cell</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/Umbrella/query_search?form.user=$row.User$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.action=Blocked&amp;form.query=*</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>

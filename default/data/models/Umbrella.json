@@ -1,0 +1,599 @@
+{
+    "modelName": "Umbrella",
+    "displayName": "Umbrella",
+    "description": "",
+    "objectSummary": {
+        "Event-Based": 3,
+        "Transaction-Based": 0,
+        "Search-Based": 0
+    },
+    "objects": [
+        {
+            "objectName": "logs",
+            "displayName": "DNS Logs",
+            "parentName": "BaseEvent",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "ExternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "ExternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "InternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "InternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "action",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "action",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "categories",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "categories",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "identities",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "identities",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "query",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "query",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "record_type",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "record_type",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "reply_code",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "reply_code",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "src",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "src",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "user",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "user",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "categoryTypeId",
+                            "owner": "logs",
+                            "type": "number",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "categoryTypeId",
+                            "comment": "",
+                            "lookupOutputFieldName": "categoryTypeId"
+                        }
+                    ],
+                    "calculationType": "Lookup",
+                    "lookupName": "opendns_categories",
+                    "comment": "",
+                    "lookupInputs": [
+                        {
+                            "inputField": "categories",
+                            "lookupField": "name"
+                        }
+                    ],
+                    "owner": "logs",
+                    "calculationID": "1kkk38wmyhxi",
+                    "editable": true
+                }
+            ],
+            "constraints": [
+                {
+                    "search": "eventtype=\"opendns-dnslog\"",
+                    "owner": "logs"
+                }
+            ],
+            "lineage": "logs"
+        },
+        {
+            "objectName": "security",
+            "displayName": "Security",
+            "parentName": "logs",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "ExternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "ExternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "InternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "InternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "action",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "action",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "categories",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "categories",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "identities",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "identities",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "query",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "query",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "record_type",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "record_type",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "reply_code",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "reply_code",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "src",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "src",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "user",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "user",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [],
+            "constraints": [
+                {
+                    "search": "categoryTypeId=2",
+                    "owner": "logs.security"
+                }
+            ],
+            "lineage": "logs.security"
+        },
+        {
+            "objectName": "blocked",
+            "displayName": "Blocked",
+            "parentName": "security",
+            "comment": "",
+            "fields": [
+                {
+                    "fieldName": "ExternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "ExternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "InternalIp",
+                    "owner": "logs",
+                    "type": "ipv4",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "InternalIp",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "action",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "action",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "categories",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "categories",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "identities",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "identities",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "query",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "query",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "record_type",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "record_type",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "reply_code",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "reply_code",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "src",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "src",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "user",
+                    "owner": "logs",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "user",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "_time",
+                    "owner": "BaseEvent",
+                    "type": "timestamp",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "_time",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "host",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "host",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "source",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "source",
+                    "comment": ""
+                },
+                {
+                    "fieldName": "sourcetype",
+                    "owner": "BaseEvent",
+                    "type": "string",
+                    "fieldSearch": "",
+                    "required": false,
+                    "multivalue": false,
+                    "hidden": false,
+                    "editable": true,
+                    "displayName": "sourcetype",
+                    "comment": ""
+                }
+            ],
+            "calculations": [],
+            "constraints": [
+                {
+                    "search": "action=\"Blocked\"",
+                    "owner": "logs.security.blocked"
+                }
+            ],
+            "lineage": "logs.security.blocked"
+        }
+    ],
+    "objectNameList": [
+        "logs",
+        "security",
+        "blocked"
+    ]
+}

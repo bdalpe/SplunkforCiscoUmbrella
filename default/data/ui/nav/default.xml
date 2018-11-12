@@ -1,0 +1,11 @@
+<nav search_view="search" color="#009fe3">
+  <view name="overview" default='true' />
+  <collection label="Dashboards">
+    <view name="operations" />
+    <view name="users" />
+    <view name="security" />
+  </collection>
+  <view name="query_report" />
+  <view name="search"/>
+  <a href="https://login.umbrella.com/" target="_blank">Umbrella Portal</a>
+</nav>
