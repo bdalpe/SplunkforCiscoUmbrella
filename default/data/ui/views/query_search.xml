@@ -1,0 +1,146 @@
+<form script="multiselect.js">
+  <label>Query Search</label>
+  <search id="searchInput">
+    <query>| tstats values(logs.ExternalIp), as ExternalIp, values(logs.reply_code) as reply_code, values(logs.action) as action, values(logs.record_type) as record_type, values(logs.user) as user, values(logs.InternalIp) as InternalIp, values(logs.categories) as categories from `umbrella_datamodel`</query>
+    <earliest>-24h</earliest>
+    <latest>now</latest>
+  </search>
+  <fieldset submitButton="true" autoRun="true">
+    <input type="time" token="time" searchWhenChanged="false">
+      <label>Time Range</label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="text" token="query" searchWhenChanged="false">
+      <label>Query</label>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="multiselect" token="ExternalIp" searchWhenChanged="false">
+      <label>External IP</label>
+      <choice value="*">ALL</choice>
+      <search base="searchInput">
+        <query>fields ExternalIp | mvexpand ExternalIp</query>
+      </search>
+      <fieldForLabel>ExternalIp</fieldForLabel>
+      <fieldForValue>ExternalIp</fieldForValue>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>ExternalIp="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+      <default>*</default>
+    </input>
+    <input type="multiselect" token="reply_code" searchWhenChanged="false">
+      <label>Reply Code</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>reply_code</fieldForLabel>
+      <fieldForValue>reply_code</fieldForValue>
+      <search base="searchInput">
+        <query>fields reply_code | mvexpand reply_code</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>reply_code="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+    <input type="multiselect" token="action" searchWhenChanged="false">
+      <label>Action</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>action</fieldForLabel>
+      <fieldForValue>action</fieldForValue>
+      <search base="searchInput">
+        <query>fields action | mvexpand action</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>action="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+    <input type="multiselect" token="record">
+      <label>Record Type</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>record_type</fieldForLabel>
+      <fieldForValue>record_type</fieldForValue>
+      <search base="searchInput">
+        <query>fields record_type | mvexpand record_type</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>record_type="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+    <input type="multiselect" token="user">
+      <label>User</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>user</fieldForLabel>
+      <fieldForValue>user</fieldForValue>
+      <search base="searchInput">
+        <query>fields user | mvexpand user</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>user="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+    <input type="multiselect" token="InternalIp">
+      <label>Internal IP Address</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>InternalIp</fieldForLabel>
+      <fieldForValue>InternalIp</fieldForValue>
+      <search base="searchInput">
+        <query>fields InternalIp | mvexpand InternalIp</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>InternalIp="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+    <input type="multiselect" token="categories">
+      <label>Category</label>
+      <choice value="*">ALL</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+      <fieldForLabel>categories</fieldForLabel>
+      <fieldForValue>categories</fieldForValue>
+      <search base="searchInput">
+        <query>fields categories | mvexpand categories</query>
+      </search>
+      <prefix>(</prefix>
+      <suffix>)</suffix>
+      <valuePrefix>categories="</valuePrefix>
+      <valueSuffix>"</valueSuffix>
+      <delimiter> OR </delimiter>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>eventtype="opendns-dnslog" $query$ $reply_code$ $action$ $record$ $user$ $categories$ $ExternalIp$ $InternalIp$ | table src, user, query, categories, action</query>
+          <earliest>$time.earliest$</earliest>
+          <latest>$time.latest$</latest>
+        </search>
+        <option name="count">25</option>
+        <option name="drilldown">none</option>
+      </table>
+    </panel>
+  </row>
+</form>
