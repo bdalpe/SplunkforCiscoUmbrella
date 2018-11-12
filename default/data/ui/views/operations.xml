@@ -70,7 +70,7 @@
         <option name="charting.chart">pie</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.query=*&amp;form.reply_code=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=*&amp;form.reply_code=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
         </drilldown>
       </chart>
     </panel>
@@ -86,7 +86,7 @@
         <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.query=*.$click.value$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.query=*.$click.value$</link>
         </drilldown>
       </chart>
     </panel>
@@ -104,7 +104,7 @@
         <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.record=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.query=*</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.record=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.query=*</link>
         </drilldown>
       </chart>
     </panel>
@@ -136,7 +136,7 @@
         <option name="drilldown">row</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.query=$row.query$&amp;form.reply_code=$row.reply_code$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.query$&amp;form.reply_code=$row.reply_code$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
         </drilldown>
       </table>
     </panel>

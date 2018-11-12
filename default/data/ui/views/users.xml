@@ -74,7 +74,7 @@
         </search>
         <option name="drilldown">cell</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.query=$row.query$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.query$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
         </drilldown>
       </table>
     </panel>

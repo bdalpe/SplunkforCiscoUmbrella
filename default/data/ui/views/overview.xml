@@ -60,7 +60,7 @@
         <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.categories=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.categories=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
         </drilldown>
       </chart>
     </panel>
@@ -79,7 +79,7 @@
         <option name="rowNumbers">true</option>
         <option name="totalsRow">false</option>
         <drilldown>
-          <link target="_blank">/app/Umbrella/query_search?form.query=$click.value$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$click.value$</link>
         </drilldown>
       </table>
     </panel>

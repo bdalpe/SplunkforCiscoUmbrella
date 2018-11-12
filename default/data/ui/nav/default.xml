@@ -5,7 +5,7 @@
     <view name="users" />
     <view name="security" />
   </collection>
-  <view name="query_report" />
+  <view name="query_search" />
   <view name="search"/>
   <a href="https://login.umbrella.com/" target="_blank">Umbrella Portal</a>
 </nav>
