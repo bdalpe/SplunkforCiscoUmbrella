@@ -29,8 +29,11 @@
           <latest>$time.latest$</latest>
         </search>
         <option name="charting.chart">pie</option>
-        <option name="charting.drilldown">none</option>
+        <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.action=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.user=$user$</link>
+        </drilldown>
       </chart>
     </panel>
     <panel>
@@ -42,8 +45,11 @@
           <latest>$time.latest$</latest>
         </search>
         <option name="charting.chart">pie</option>
-        <option name="charting.drilldown">none</option>
+        <option name="charting.drilldown">all</option>
         <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.categories=$click.value$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.user=$user$</link>
+        </drilldown>
       </chart>
     </panel>
     <panel>
@@ -57,9 +63,12 @@
         <option name="charting.axisTitleX.visibility">collapsed</option>
         <option name="charting.axisTitleY.visibility">collapsed</option>
         <option name="charting.chart">line</option>
-        <option name="charting.drilldown">none</option>
+        <option name="charting.drilldown">all</option>
         <option name="charting.legend.placement">none</option>
         <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.user=$user$</link>
+        </drilldown>
       </chart>
     </panel>
   </row>
@@ -74,7 +83,7 @@
         </search>
         <option name="drilldown">cell</option>
         <drilldown>
-          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.query$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$</link>
+          <link target="_blank">/app/SplunkforCiscoUmbrella/query_search?form.query=$row.query$&amp;form.time.earliest=$earliest$&amp;form.time.latest=$latest$&amp;form.user=$user$</link>
         </drilldown>
       </table>
     </panel>
