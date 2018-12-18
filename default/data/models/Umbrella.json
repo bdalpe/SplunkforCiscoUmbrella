@@ -75,18 +75,6 @@
                     "comment": ""
                 },
                 {
-                    "fieldName": "query",
-                    "owner": "logs",
-                    "type": "string",
-                    "fieldSearch": "",
-                    "required": false,
-                    "multivalue": false,
-                    "hidden": false,
-                    "editable": true,
-                    "displayName": "query",
-                    "comment": ""
-                },
-                {
                     "fieldName": "record_type",
                     "owner": "logs",
                     "type": "string",
@@ -212,6 +200,28 @@
                     "owner": "logs",
                     "calculationID": "1kkk38wmyhxi",
                     "editable": true
+                },
+                {
+                    "outputFields": [
+                        {
+                            "fieldName": "query",
+                            "owner": "logs",
+                            "type": "string",
+                            "fieldSearch": "",
+                            "required": false,
+                            "multivalue": false,
+                            "hidden": false,
+                            "editable": true,
+                            "displayName": "query",
+                            "comment": ""
+                        }
+                    ],
+                    "calculationID": "mkihqqd4th",
+                    "owner": "logs",
+                    "editable": true,
+                    "comment": "",
+                    "calculationType": "Eval",
+                    "expression": "rtrim(query, \".\")"
                 }
             ],
             "constraints": [
