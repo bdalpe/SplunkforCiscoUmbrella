@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0.0",
+  "info": {
+    "title": "Cisco Umbrella App for Splunk",
+    "id": {
+      "group": null,
+      "name": "SplunkforCiscoUmbrella",
+      "version": "1.0.0"
+    },
+    "author": [
+      {
+        "name": "Brendan Dalpe",
+        "email": "brendan.dalpe@criticalstart.com",
+        "company": "Critical Start"
+      }
+    ],
+    "releaseDate": null,
+    "description": "",
+    "classification": {
+      "intendedAudience": null,
+      "categories": [],
+      "developmentStatus": null
+    },
+    "commonInformationModels": null,
+    "license": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": null,
+      "text": null,
+      "uri": null
+    }
+  },
+  "dependencies": {
+    "TA-Umbrella": {
+      "version": ">= 1.0.0"
+    },
+    "utbox": {
+      "version": ">= 1.6"
+    }
+  },
+  "tasks": [],
+  "inputGroups": {
+  },
+  "incompatibleApps": {
+  },
+  "platformRequirements": {
+    "splunk": {
+      "Enterprise": "*"
+    }
+  }
+}
