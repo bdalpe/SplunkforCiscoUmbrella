@@ -17,3 +17,8 @@ You'll need to have the following installed for the app to work correctly.
 
 * [Umbrella Add-on for Splunk Enterprise](https://splunkbase.splunk.com/app/3629/)
 * [URL Toolbox](https://splunkbase.splunk.com/app/2734/)
+
+### Legal ###	
+* Cisco, Cisco Umbrella, and the Umbrella Logo, are registred trademarks of Cisco.	
+* The Orange OpenDNS Logo is a registered trademark of Cisco OpenDNS, LLC.	
+* Company names, trademarks, and product logos are property of their respective owners. Use does not imply any affiliation or endorsement.
