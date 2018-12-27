@@ -5,7 +5,7 @@
     <earliest>-24h</earliest>
     <latest>now</latest>
   </search>
-  <fieldset submitButton="true" autoRun="true">
+  <fieldset submitButton="true">
     <input type="time" token="time" searchWhenChanged="false">
       <label>Time Range</label>
       <default>
