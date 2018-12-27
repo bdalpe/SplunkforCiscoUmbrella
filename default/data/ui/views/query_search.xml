@@ -134,7 +134,7 @@
     <panel>
       <table>
         <search>
-          <query>eventtype="opendns-dnslog" $query$ $reply_code$ $action$ $record$ $user$ $categories$ $ExternalIp$ $InternalIp$ | table src, user, query, categories, action</query>
+          <query>| datamodel Umbrella search | search $query$ $reply_code$ $action$ $record$ $user$ $categories$ $ExternalIp$ $InternalIp$ | table src, user, query, categories, action</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>

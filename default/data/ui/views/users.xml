@@ -77,7 +77,7 @@
       <table>
         <title>Query Report</title>
         <search>
-          <query>sourcetype="opendns:dnslog" user="$user$" | fields src, query, categories, action | table src, query, categories, action</query>
+          <query>| datamodel Umbrella search | search user="$user$" | fields src, query, categories, action | table src, query, categories, action</query>
           <earliest>$time.earliest$</earliest>
           <latest>$time.latest$</latest>
         </search>
