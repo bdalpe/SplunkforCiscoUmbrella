@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+
+    commands:
+      - echo "[+] Installing Splunk App Inspect"
+      - wget http://download.splunk.com/misc/appinspect/splunk-appinspect-latest.tar.gz
+      - pip3 install --no-cache splunk-appinspect-latest.tar.gz
+  pre_build:
+    commands:
+      - splunk-appinspect list version
+  build:
+    commands:
+      - splunk-appinspect inspect SplunkforCiscoUmbrella
