@@ -4,11 +4,7 @@ Cisco Umbrella App for Splunk
 The Cisco Umbrella App for Splunk provides dashboards and an interactive query exploration tool for reporting and analysis of Umbrella DNS logs. Quickly find security incidents, policy violations, and other DNS anomolies.
 
 ### Installing ###
-Clone the Github repo to your `$SPLUNK_HOME/etc/apps` directory.
-
-    git clone https://github.com/bdalpe/SplunkforCiscoUmbrella
-    
-Or download from Github and upload the zip file to your Splunk server using the App Manager in the UI.
+Download the .tgz file from the [release page](https://github.com/bdalpe/SplunkforCiscoUmbrella/releases) and install on your Splunk search head.
 
 By default, the Umbrella data model has acceleration disabled. To load dashboards faster, it is recommended to enable acceleration for at least the last 7 days.
 
