@@ -1,6 +1,10 @@
 name: Splunk AppInspect
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'SplunkforCiscoUmbrella/**'
+  pull_request:
 
 jobs:
   appinspect:
